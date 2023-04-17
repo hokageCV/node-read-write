@@ -1,7 +1,8 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, NextFunction } from "express";
 
 import morgan from "morgan";
 import cors from "cors";
+import router from "./router";
 
 const app = express();
 
@@ -10,8 +11,11 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req: Request, res: Response) => {
-  return res.json({ message: "read write" });
+app.use("/", router);
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.log(err);
+  return res.json({ message: `had an error: ${err.message}` });
 });
 
 export default app;

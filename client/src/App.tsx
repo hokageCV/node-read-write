@@ -1,18 +1,22 @@
 import React from "react";
+import Navbar from "./components/layouts/Navbar";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Write } from "./components/pages/Write";
+import { Read } from "./components/pages/Read";
+import Auth from "./components/pages/Auth";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-slate-200">React App</h1>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
-      </div>
+    <div className="App bg-baseBG h-full min-h-screen pb-5">
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Navigate to="/auth" />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/write" element={<Write />} />
+          <Route path="/read" element={<Read />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

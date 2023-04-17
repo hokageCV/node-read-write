@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer utilities {
-  .\?\?\? > * {
+  .\?\?\? {
     @apply outline outline-2 outline-red;
   }
 }
