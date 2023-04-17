@@ -15,20 +15,22 @@ export default function Navbar() {
       </div>
       <div className="md:flex-none flex flex-row">
         <p className="mr-6 text-slate-800">{userData.name}</p>
-        <div className="btn-group ">
-          <button
-            className="btn bg-navBG hover:bg-[#b14852] btn-sm text-slate-800"
-            onClick={handleWrite}
-          >
-            Write
-          </button>
-          <button
-            className="btn bg-navBG hover:bg-[#b14852] btn-sm text-slate-800"
-            onClick={handleRead}
-          >
-            Read
-          </button>
-        </div>
+        {userData.email && (
+          <div className="btn-group ">
+            <button
+              className="btn bg-navBG hover:bg-[#b14852] btn-sm text-slate-800"
+              onClick={handleWrite}
+            >
+              Write
+            </button>
+            <button
+              className="btn bg-navBG hover:bg-[#b14852] btn-sm text-slate-800"
+              onClick={handleRead}
+            >
+              Read
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
